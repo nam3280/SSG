@@ -8,14 +8,20 @@ public class Prob3 {
 	}
 
 	private static void printUniqueNumber(int[] array) {
-		for (int i = 1; i < array.length; i++) {
-			for (int j = i - 1; j < array.length; j++) {
-				if(j == i)
+		int[] arr = new int[array.length];
+		for (int i = 0; i < array.length; i++) {
+			arr[i] = array[i];
+			int count = 0;
+			for (int j = 0; j < array.length; j++) {
+				if(j == i || count > 0)
 					continue;
 				if (array[i] == array[j]) {
-					System.out.println(array[i]);
+					count++;
+					arr[i] -= array[i];
 				}
 			}
+			if(arr[i] != 0)
+				System.out.printf("%d, ",arr[i]);
 		}
 	}
 }
