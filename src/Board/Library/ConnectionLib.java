@@ -1,10 +1,10 @@
-package Board.dto;
+package Board.Library;
 
 import java.sql.*;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ConnectionDTO{
+public class ConnectionLib {
   @Getter
   private Connection connection = null;
   @Getter
@@ -16,12 +16,8 @@ public class ConnectionDTO{
 
   public boolean setConnection(Connection connection) {
     try {
-      Class.forName("com.mysql.cj.jdbc.Driver");
       connection = DriverManager.getConnection(url,id,password);
     } catch (SQLException e) {
-      System.err.println(e.getMessage());
-      return false;
-    } catch (ClassNotFoundException e) {
       System.err.println(e.getMessage());
       return false;
     }

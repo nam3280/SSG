@@ -28,7 +28,8 @@ public class crudDB {
     }
   }
 
-  public boolean create(Connection connection, Board board) {
+  public boolean create(Connection connection,
+      Board board) {
     String query = "INSERT INTO boardField(btitle,bcontent,bwriter,bdate)"
         + "VALUES(?,?,?,?)";
     try {
@@ -65,13 +66,35 @@ public class crudDB {
         System.out.println("작성자 : " + rs.getString("bwriter"));
         System.out.println("날짜 : " + rs.getString("bdate"));
       }
-
     } catch (SQLException e) {
       System.err.println(e.getMessage());
     }
   }
 
-  public void clear(Connection connection){
+  public void update(Connection connection, int bno){
+    String query = new StringBuilder().append("UPDATE boardField SET ")
+        .append("btitle = ? ,")
+        .append("bcontent = ? ,")
+        .append("bwriter = ? ")
+        .append("WHERE bno = ")
+        .append(bno).toString();
+
+    System.out.println(query);
+
+    try {
+      pstmt = connection.prepareStatement(query);
+
+
+      System.out.println("[수정 내용 입력]");
+
+//      System.out.println("제목 : " + rs.getString());
+//      System.out.println("내용 : " + rs.getString("bcontent"));
+//      System.out.println("작성자 : " + rs.getString("bwriter"));
+
+      pstmt.executeUpdate();
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
 
   }
 }
