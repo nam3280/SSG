@@ -2,16 +2,11 @@ package Board.vo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import lombok.Setter;
 
 public class Board {
-  @Setter
   private int bno;
-  @Setter
   private String btitle;
-  @Setter
   private String bcontent;
-  @Setter
   private String bwriter;
   private String bdate;
 
@@ -35,9 +30,25 @@ public class Board {
     return bdate;
   }
 
-  public void setBdate(Date bdate) {
+  public void setBdateDB(Date bdate) {
     SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/d");
 
     this.bdate = date.format(bdate);
+  }
+
+  public void setBno(int bno) {
+    this.bno = bno;
+  }
+
+  public void setBtitle(String btitle) {
+    this.btitle = btitle;
+  }
+
+  public void setBcontent(String bcontent) {
+    this.bcontent = bcontent;
+  }
+
+  public void setBwriter(String bwriter) {
+    this.bwriter = bwriter;
   }
 }
