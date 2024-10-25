@@ -1,1 +1,1 @@
-SSG I&C Java
+# Shinsegae I&C Java
